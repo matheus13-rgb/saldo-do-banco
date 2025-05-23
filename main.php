@@ -4,18 +4,27 @@
 $titular = "Matheus Duarte";
 $saldoAtual = 1000;
 
-while (true) {
+function titular($titular, $saldoAtual) {
     echo "***************** \n";
     echo "Titular: $titular \n";
-    echo "***************** \n";
+    echo "R$$saldoAtual \n";
+    echo "*****************";
+}
 
+function opcoes(){
     echo "
-    1. Consultar saldo atual
-    2. Sacar valor
-    3. Depositar valor
-    4. Sair \n";
+1. Consultar saldo atual
+2. Sacar valor
+3. Depositar valor
+4. Sair \n";
+}
 
-        $numero = (float) fgets(STDIN);
+while (true) {
+    titular($titular, $saldoAtual);
+    opcoes();
+
+
+    $numero = (float) fgets(STDIN);
 
     //Não aceitar opção nao existente
     if ($numero > 4 || $numero < 1) {
@@ -28,17 +37,13 @@ while (true) {
     }
 
     // 2. Sacar Valor
-    if ($numero == 2) {
-        
-        echo "***************** \n";
-        echo "Titular: $titular \n";
-        echo "Saldo Atual: R$$saldoAtual \n";
-        echo "***************** \n";
+    if ($numero == 2) {      
+        titular($titular, $saldoAtual);
         
         echo "Qual valor você quer sacar? \n";
         $saque = (float) fgets(STDIN);
             if ($saque > $saldoAtual) {
-                echo "Saldo insuficente";
+                echo "Saldo insuficente \n";
             } else {
                 $saldoAtual = $saldoAtual - $saque;
                 echo "Seu saldo atual é de: R$$saldoAtual";
@@ -47,11 +52,7 @@ while (true) {
 
     // 3. Depositar Valor
     if ($numero == 3) {
-
-        echo "***************** \n";
-        echo "Titular: $titular \n";
-        echo "Saldo Atual: R$$saldoAtual \n";
-        echo "***************** \n"; 
+        titular($titular, $saldoAtual);
 
         echo "Qual valor você quer depositar? \n";
         $deposito = (float) fgets(STDIN);
@@ -59,11 +60,7 @@ while (true) {
         $saldoAtual += $deposito;
         echo "Seu saldo atual é de: R$$saldoAtual";
 
-        echo ("
-        1. Consultar saldo atual
-        2. Sacar valor
-        3. Depositar valor
-        4. Sair \n");
+    opcoes();
 
         $numero = (float) fgets(STDIN);
     }   
